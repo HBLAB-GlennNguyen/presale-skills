@@ -1,0 +1,15 @@
+{
+  "name": "hbg",
+  "version": "0.1.0",
+  "description": "Presale skill suite for Global: analyze RFPs/customer requirements, estimate effort and master schedule, draft client-facing proposals, and generate clickable UI prototypes.",
+  "author": {
+    "name": "thinhnd1"
+  },
+  "keywords": [
+    "presale",
+    "rfp",
+    "estimation",
+    "proposal",
+    "prototype"
+  ]
+}
