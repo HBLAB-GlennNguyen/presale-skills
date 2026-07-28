@@ -44,4 +44,4 @@ Mỗi câu hỏi viết theo văn phong ở trên còn phải được xếp và
 |---|---|---|
 | Người ra quyết định, đầu mối liên hệ kỹ thuật (chỉ xác nhận đầu mối, không phải nội dung kỹ thuật), ngân sách, timeline (khởi động/go-live/mốc trung gian), mô hình hợp tác, các bên liên quan khác, các dòng trống trong bảng "Vai trò & trách nhiệm hai bên" | **A. Sale** | Sales/Account Manager — quan tâm cam kết, nguồn lực, thời gian, hợp đồng |
 | Mô tả phạm vi còn mơ hồ, các hạng mục ngoài phạm vi, đối tượng nghiệp vụ/vòng đời chưa rõ, đối tượng sử dụng & nhiệm vụ chưa rõ, workflow/luồng nghiệp vụ chưa rõ, tiêu chí thành công | **B. Domain/BA** | Business Analyst/Consultant — quan tâm logic nghiệp vụ, quy trình, người dùng |
-| Stack công nghệ hiện tại, hệ thống cần tích hợp, yêu cầu công nghệ cụ thể, hiệu năng, bảo mật, khả năng mở rộng | **C. Technical** | Technical Lead/Consultant — quan tâm ràng buộc kỹ thuật, khả thi triển khai |
+| Stack công nghệ hiện tại, hệ thống cần tích hợp, yêu cầu công nghệ cụ thể, hiệu năng, bảo mật, tuân thủ / quy định (compliance), khả năng mở rộng | **C. Technical** | Technical Lead/Consultant — quan tâm ràng buộc kỹ thuật, khả thi triển khai |

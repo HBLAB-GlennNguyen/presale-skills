@@ -8,7 +8,7 @@ analyzing-rfp ──┬──> estimating-effort ──> writing-proposal
 ```
 
 - `estimating-effort` và `writing-proposal` cần chạy đúng thứ tự (mỗi skill đọc output của skill trước).
-- `building-prototype` chỉ cần output của `analyzing-rfp` (function list + sitemap), chạy độc lập với `estimating-effort`/`writing-proposal`.
+- `building-prototype` chỉ cần output của `analyzing-rfp` (function list + sitemap), chạy độc lập với `estimating-effort`/`writing-proposal`. Nếu đã chạy `building-prototype` từ trước khi chạy `writing-proposal`, proposal sẽ tự thêm mục "Demo tương tác" — nên cân nhắc chạy sớm dù thứ tự vẫn là tùy chọn.
 
 ## Cài đặt
 
@@ -90,7 +90,7 @@ Skill sẽ hỏi 2 việc trước khi viết:
 
 ### Bước 4 — `hbg:building-prototype`
 
-Chạy sau khi Bước 1 đã có `scope-and-sitemap.md` (không cần chờ Bước 2, 3).
+Chạy sau khi Bước 1 đã có `scope-and-sitemap.md` (không cần chờ Bước 2, 3). Chạy bước này trước Bước 3 là tùy chọn, nhưng nếu làm vậy, `proposal-outline.md` ở Bước 3 sẽ có thêm mục "Demo tương tác" trỏ tới prototype.
 
 Skill sẽ hỏi:
 1. Bộ QnA dựng UI kit (6 câu: màu thương hiệu, logo, mood, app tham chiếu, đối tượng người dùng, loại phần mềm)

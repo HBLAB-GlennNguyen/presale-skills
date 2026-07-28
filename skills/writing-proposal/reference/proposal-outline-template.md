@@ -21,6 +21,8 @@ Cấu trúc "Content detail" của `proposal-outline.md`. Mỗi Part bắt đầ
 
 - **Phương án tiếp cận chung** — từ master-schedule.md: liệt kê từng giai đoạn (phase) kèm output/kết quả kỳ vọng của giai đoạn đó (tổng hợp từ module liên quan + mục tiêu giai đoạn).
 - **Danh sách modules chính** — trực tiếp từ "Danh sách chức năng/module chính" trong scope-and-sitemap.md.
+- **Đối tượng sử dụng chính** — trực tiếp từ bảng "Đối tượng sử dụng & nhiệm vụ" trong scope-and-sitemap.md (vai trò người dùng + nhiệm vụ chính, tóm gọn theo vai trò và nhiệm vụ cốt lõi — không cần chép lại mô tả chi tiết nếu quá dài).
+- **Luồng nghiệp vụ chính** — tái sử dụng trực tiếp state diagram và screen flow (dạng Mermaid) từ mục "Luồng nghiệp vụ chính (Workflow)" trong scope-and-sitemap.md cho các workflow đã xác nhận — không vẽ lại hay diễn giải thành văn xuôi, giữ nguyên dạng diagram.
 - **To-be System** *(nếu migration/renewal)* **hoặc High-level System Architecture** *(nếu không)* — từ kết quả cổng tương tác Technical Solution (xem `SKILL.md` bước tương ứng và `tech-solution-options.md`).
 - **Technologies stack** — từ lựa chọn ở cổng tương tác, đối chiếu với "Công nghệ / hệ thống liên quan" hiện tại của khách hàng để đảm bảo tương thích/tích hợp được.
 - **Infrastructure diagram** — mô tả bằng text luồng kết nối giữa các service đã chọn (đây là outline text để AI tool tự vẽ diagram, không phải hình ảnh thật).
@@ -45,6 +47,7 @@ Cấu trúc "Content detail" của `proposal-outline.md`. Mỗi Part bắt đầ
   1. Danh sách deliverable chuẩn theo loại output bàn giao: mã nguồn đầy đủ (source code + quyền truy cập version control), tài liệu kỹ thuật (kiến trúc, API spec, database schema), tài liệu hướng dẫn sử dụng, đào tạo người dùng/đội vận hành, triển khai lên môi trường production/staging theo thỏa thuận, bảo hành sau go-live.
   2. Tham chiếu ngắn gọn lại "Danh sách modules chính" đã trình bày ở Part 2 (không lặp lại chi tiết, chỉ nhắc đây là các module được bàn giao).
 - **Resource plan** — trực tiếp từ team-composition.md (bảng headcount theo giai đoạn).
+- **Demo tương tác** *(chỉ thêm nếu `./output/prototype/index.html` đã tồn tại)* — 1 dòng dẫn tới đường dẫn demo tương tác đã dựng ở building-prototype, đặt trước Quotation để củng cố niềm tin trước khi chốt. Bỏ qua mục này hoàn toàn (không để placeholder) nếu file này chưa tồn tại.
 - **Quotation** — từ team-composition.md + effort-breakdown.md: bảng "Vị trí | Effort (man-day) | Đơn giá | Thành tiền" — cột Đơn giá và Thành tiền để trống, ghi chú "Cần điền đơn giá theo thời điểm báo giá".
 
 ## Part 5: Appendix
