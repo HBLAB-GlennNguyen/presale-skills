@@ -2,6 +2,8 @@
 
 Mỗi màn hình thuộc đúng 1 trong 2 nhóm dưới đây — xác định dựa trên danh sách 2-4 workflow chính đã xác nhận với người dùng trước khi generate.
 
+**Ngôn ngữ nội dung hiển thị:** các ví dụ copy tiếng Việt dưới đây (vd "Tạo thành công", "Reset dữ liệu demo") chỉ là minh hoạ mặc định — dịch sang ngôn ngữ đã chọn ở câu 7 trong `ui-kit-qna.md` nếu khác Tiếng Việt.
+
 ## Màn hình thuộc workflow chính — tương tác đầy đủ
 
 - **Form:** validate client-side thật (required field, định dạng email/số điện thoại/số nếu có trường tương ứng) bằng vanilla JS, hiển thị lỗi ngay dưới từng trường khi không hợp lệ.

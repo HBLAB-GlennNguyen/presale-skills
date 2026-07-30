@@ -36,6 +36,15 @@
 
 - Tổng số màn hình tính vào ngưỡng độ phức tạp (Chính + Quản lý + Pop-up dạng form):
 
+## Thiết kế nhóm menu (Menu Grouping)
+> Gom các màn hình ở bảng "Danh sách màn hình & Sitemap" thành các nhóm menu theo **chức năng nghiệp vụ**, không theo tên module kỹ thuật — đây là cấu trúc menu điều hướng thực tế mà `building-prototype` dùng để dựng sidebar (mỗi nhóm là 1 mục cha có thể mở/thu, các màn hình trong nhóm là mục con). Một màn hình chỉ thuộc đúng 1 nhóm menu. Nhóm thường gặp (tham khảo, không bắt buộc dùng nguyên xi): **Quản trị hệ thống** (cấu hình, phân quyền, audit log), **Dữ liệu chủ/Master data** (danh mục, sản phẩm, dịch vụ), **Tài chính** (đơn hàng, giao dịch, hoá đơn), **Khách hàng** (customer, hợp đồng/contract) — đặt tên nhóm theo đúng ngữ cảnh nghiệp vụ của dự án, không copy nguyên các tên ví dụ này nếu không phù hợp.
+
+| # | Tên nhóm menu | Các màn hình/chức năng thuộc nhóm | Ghi chú |
+|---|---|---|---|
+| 1 | | | |
+
+- Tổng số nhóm menu đã xác định:
+
 ## Luồng nghiệp vụ chính (Workflow)
 > Xác định 2-4 luồng nghiệp vụ chính nhất của dự án — danh sách này dùng chung cho cả `building-prototype` (quyết định màn hình nào có tương tác đầy đủ), không hỏi lại ở bước đó. Với mỗi workflow: vẽ state diagram nếu chức năng gắn với 1 đối tượng có vòng đời trong bảng "Phân tích đối tượng nghiệp vụ & vòng đời" ở trên, và luôn vẽ screen flow theo thứ tự màn hình tham chiếu bảng "Danh sách màn hình & Sitemap" ở trên.
 
