@@ -12,6 +12,7 @@
 - Icon bằng emoji unicode (📊, ✅) thay cho SVG nhất quán — luôn dùng bộ icon outline đã định nghĩa trong `ui-kit-brief.md`.
 - Chữ gradient trang trí không phục vụ đọc nội dung (khác với gradient nền sidebar/hero đã được yêu cầu ở "Nguyên tắc dùng màu" — đó là nền, không phải text).
 - Card/section scaffold lặp lại y hệt "icon tròn + heading + 1 dòng mô tả" cho mọi khối nội dung khác nhau — nếu 3+ khối liên tiếp dùng đúng 1 khuôn này, đổi bố cục cho ít nhất 1 khối để tạo phân cấp.
+- Ảnh minh họa (Landing page) không khớp nội dung, có watermark/logo hãng ảnh đè lên, hoặc là 1 URL ảnh tự đoán chưa được xác minh tồn tại — xem quy trình bắt buộc trong `reference/content-and-seo.md`.
 
 ## Browser-chrome theming (rẻ nhưng hiệu quả — dấu hiệu rẻ nhất phân biệt "được thiết kế" với "được lắp ráp vội")
 
@@ -31,7 +32,7 @@ Không dùng `outline: none` mà không có thay thế — mọi phần tử tư
 - **Thời lượng:** 100-150ms cho feedback tức thời (hover, click, toggle), 200-300ms cho chuyển đổi trạng thái trong màn hình (mở accordion, chuyển tab), 400-600ms cho các sequence lớn hơn (mở modal, entrance của Dashboard khi load) — không dùng thời lượng tùy tiện.
 - **Easing:** `ease-out` cho phần tử xuất hiện/mở rộng, `ease-in` cho phần tử biến mất/thu gọn — KHÔNG dùng bounce/elastic easing mặc định (dấu hiệu AI-generated rõ rệt, không phù hợp phần mềm nội bộ/B2B).
 - **Tôn trọng `prefers-reduced-motion`:** mọi animation khác flat opacity/color transition đơn giản phải wrap trong `@media (prefers-reduced-motion: no-preference)`; dưới điều kiện `reduce`, giữ transition tối thiểu (không tắt hoàn toàn phản hồi, chỉ bỏ chuyển động lớn).
-- **Pattern động phù hợp phần mềm nội bộ/CRUD (không lấy pattern hướng marketing-site như scroll-parallax):** hover elevation nhẹ trên card (translateY -2px + shadow tăng cấp), skeleton loading khi tải dữ liệu bảng (thay vì spinner trống), toast slide-in từ góc màn hình, sticky header đổi shadow khi cuộn (báo hiệu đang cuộn qua nội dung), accordion/dropdown expand theo `max-height`/`grid-template-rows` với easing ở trên.
+- **Pattern động phù hợp phần mềm nội bộ/CRUD (không lấy pattern hướng marketing-site như scroll-parallax):** hover elevation nhẹ trên card (translateY -2px + shadow tăng cấp), skeleton loading khi tải dữ liệu bảng (thay vì spinner trống), toast slide-in từ góc màn hình, sticky header đổi shadow khi cuộn (báo hiệu đang cuộn qua nội dung), accordion/dropdown expand theo `max-height`/`grid-template-rows` với easing ở trên. Dòng này áp dụng cho Loại dự án = Hệ thống quản lý; khi Loại dự án = Landing page, dùng bộ pattern riêng theo mức L1/L2/L3 trong `reference/landing-page.md` (bao gồm cả scroll-reveal, micro-interaction hover và — ở mức "Sống động" — parallax nhẹ/carousel), không bị giới hạn bởi dòng này.
 
 ## QA cuối — 2 track tách biệt, không để track này neo/lây nhiễm track kia
 
@@ -46,4 +47,4 @@ Không dùng `outline: none` mà không có thay thế — mọi phần tử tư
 - Đếm số chỗ vi phạm danh sách cấm ở trên — phải bằng 0.
 Mỗi mục không đạt = sửa ngay tại chỗ, không ghi chú "để sau".
 
-**QA trực quan tùy chọn (best-effort, không bắt buộc):** nếu môi trường đang chạy skill này có sẵn cách render/chụp màn hình HTML (vd qua skill `run` hoặc công cụ trình duyệt khác), mở 2 màn hình neo (Đăng nhập/Trang chủ + Dashboard) ở khổ ~375px và ~1440px trước khi báo hoàn tất, kiểm tra layout không vỡ. Bỏ qua bước này nếu không có công cụ phù hợp — không dừng tiến trình để cài đặt công cụ mới chỉ cho việc này.
+**QA trực quan tùy chọn (best-effort, không bắt buộc):** nếu môi trường đang chạy skill này có sẵn cách render/chụp màn hình HTML (vd qua skill `run` hoặc công cụ trình duyệt khác), mở màn hình neo (Đăng nhập/Trang chủ + Dashboard cho Hệ thống quản lý; Trang chủ cho Landing page) ở khổ ~375px và ~1440px trước khi báo hoàn tất, kiểm tra layout không vỡ. Bỏ qua bước này nếu không có công cụ phù hợp — không dừng tiến trình để cài đặt công cụ mới chỉ cho việc này.

@@ -2,6 +2,8 @@
 
 Áp dụng cho mỗi dòng trong bảng "Danh sách màn hình & Sitemap" của `scope-and-sitemap.md`, sau khi đã có UI kit (`ui-kit-brief.md`).
 
+**Nếu Loại dự án trong `ui-kit-brief.md` là Landing page/Website marketing thuần: TOÀN BỘ file này không áp dụng** (không có sidebar, không có Dashboard/CRUD/Settings) — dùng `reference/landing-page.md` cho mọi trang trong sitemap thay thế, kể cả mục "Khung layout chuẩn" bên dưới (header/footer riêng của landing page thay cho sidebar/nav ngang ở đây). Phần còn lại của file này chỉ áp dụng cho Loại dự án = Hệ thống quản lý.
+
 **Ngôn ngữ nội dung hiển thị:** mọi ví dụ label/nút/breadcrumb bằng tiếng Việt trong tài liệu này (vd "Lưu"/"Hủy", "Trang chủ", "Đăng nhập") chỉ là minh hoạ mặc định — dịch sang ngôn ngữ đã chọn ở câu 7 trong `ui-kit-qna.md` nếu khác Tiếng Việt, áp dụng nhất quán cho toàn bộ nội dung hiển thị trên màn hình (không áp dụng cho tên thư mục/file, vẫn giữ theo sitemap tiếng Việt).
 
 ## Chất lượng hoàn thiện — không được trông như wireframe
@@ -83,9 +85,9 @@ Chữ trên UI là vật liệu thiết kế, không phải phần trang trí đ
 
 ## Mock data
 
-Sinh 5-10 dòng dữ liệu mẫu hợp lý theo ngôn ngữ đã chọn ở câu 7 trong `ui-kit-qna.md` (tên người/công ty/địa chỉ dùng ngôn ngữ/văn hoá tương ứng — vd tên Việt cho Tiếng Việt, tên quốc tế cho Tiếng Anh), gắn với ngữ cảnh khách hàng (ngành nghề, tên module) đã có trong `requirements-summary.md`/`scope-and-sitemap.md` — không dùng dữ liệu chung chung kiểu "Item 1, Item 2". Đặt trực tiếp trong `script.js` của màn hình dưới dạng mảng JS.
+**Bắt buộc: dữ liệu đối tượng nghiệp vụ KHÔNG đặt trong `script.js` của từng màn hình — dùng data layer dùng chung, xem `reference/data-layer.md`.** Sinh 5-10 bản ghi mẫu hợp lý theo ngôn ngữ đã chọn ở câu 7 trong `ui-kit-qna.md` (tên người/công ty/địa chỉ dùng ngôn ngữ/văn hoá tương ứng — vd tên Việt cho Tiếng Việt, tên quốc tế cho Tiếng Anh), gắn với ngữ cảnh khách hàng (ngành nghề, tên module) đã có trong `requirements-summary.md`/`scope-and-sitemap.md` — không dùng dữ liệu chung chung kiểu "Item 1, Item 2". Ghi vào đúng file `assets/data/<entity>.js` của entity đó (đã tạo ở bước "Generate the shared data layer" trong `SKILL.md`), `script.js` của màn hình chỉ đọc từ biến `DATA_<ENTITY>` đã nạp qua `<script>`, không tự khai báo mảng dữ liệu riêng.
 
-**Dữ liệu xuyên màn hình phải khớp nhau (đây là điểm khiến demo trông như phần mềm thật, không phải các trang rời rạc):** khi 1 thực thể (đơn hàng, khách hàng, linh kiện...) xuất hiện ở nhiều màn hình (vd 1 dòng trong bảng danh sách VÀ trong "Hoạt động gần đây" của Dashboard VÀ trong dropdown chọn của 1 form khác), dùng lại đúng tên/mã/trạng thái đó thay vì bịa dữ liệu mới mỗi lần — giữ 1 danh sách mock cố định cho các thực thể chính của dự án và tái dùng khi generate màn hình liên quan. Dữ liệu cũng nên đa dạng trạng thái (không để tất cả các dòng cùng 1 trạng thái "Hoàn thành") và có 1-2 trường hợp biên phản ánh đúng ngữ cảnh nghiệp vụ (vd 1 dòng sắp hết hạn, 1 dòng thiếu thông tin) để các bộ lọc/badge trạng thái có gì đó thật để phân biệt khi demo.
+**Dữ liệu xuyên màn hình phải khớp nhau (đây là điểm khiến demo trông như phần mềm thật, không phải các trang rời rạc):** khi 1 thực thể (đơn hàng, khách hàng, linh kiện...) xuất hiện ở nhiều màn hình (vd 1 dòng trong bảng danh sách VÀ trong "Hoạt động gần đây" của Dashboard VÀ trong dropdown chọn của 1 form khác), mọi màn hình đọc từ ĐÚNG 1 file `assets/data/<entity>.js` — đây là cách data layer đảm bảo yêu cầu này bằng cấu trúc, không phải chỉ bằng cách "nhớ dùng lại tên/mã cũ" mỗi lần generate. Dữ liệu cũng nên đa dạng trạng thái (không để tất cả các dòng cùng 1 trạng thái "Hoàn thành") và có 1-2 trường hợp biên phản ánh đúng ngữ cảnh nghiệp vụ (vd 1 dòng sắp hết hạn, 1 dòng thiếu thông tin) để các bộ lọc/badge trạng thái có gì đó thật để phân biệt khi demo.
 
 ## Điều hướng giữa các màn hình
 

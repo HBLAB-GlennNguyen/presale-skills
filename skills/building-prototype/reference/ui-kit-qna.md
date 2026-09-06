@@ -2,6 +2,24 @@
 
 Hỏi 8 câu dưới đây trước khi generate bất kỳ màn hình nào — đây là UI kit của SẢN PHẨM TƯƠNG LAI CỦA KHÁCH HÀNG, không dùng branding HBLAB. Ghi lại câu trả lời vào `output/prototype/ui-kit-brief.md` để dùng nhất quán cho mọi màn hình và để chỉnh sửa lại sau nếu cần.
 
+## Câu hỏi phân loại dự án (hỏi TRƯỚC 8 câu bên dưới, quyết định toàn bộ luồng ở `SKILL.md`)
+
+**Loại dự án** — hỏi trực tiếp người dùng, KHÔNG tự suy luận (khác với archetype/menu-grouping bên dưới vốn tự suy luận được):
+- **Hệ thống quản lý / phần mềm có đăng nhập** (mặc định nếu người dùng không nêu rõ) — hành vi chuẩn hiện tại: có đăng nhập, dashboard, CRUD theo module, sidebar/nav theo nhóm menu. Toàn bộ phần còn lại của tài liệu này áp dụng như mô tả.
+- **Landing page / Website marketing thuần** — không có đăng nhập, không dashboard, không CRUD; sitemap toàn bộ là các trang giới thiệu/bán hàng (Trang chủ, Giới thiệu, Bảng giá, Blog, Liên hệ...). Chọn loại này chuyển sang nhánh riêng trong `SKILL.md` (bỏ workflow CRUD/menu grouping/entry-flow đăng nhập, dùng `reference/landing-page.md` cho toàn bộ trang) — hỏi thêm 3 câu L1-L3 ngay bên dưới trước khi tiếp tục sang 8 câu chuẩn.
+
+Ghi lựa chọn vào `ui-kit-brief.md` mục "Loại dự án".
+
+### Nếu chọn Landing page / Website marketing thuần — hỏi thêm 3 câu sau
+
+**L1. Mục tiêu chính của trang** — chọn 1: Thu lead/đăng ký dùng thử · Bán hàng trực tiếp (sản phẩm/dịch vụ có giá) · Giới thiệu dịch vụ đầy đủ (nhiều thông tin, case study) · Xây thương hiệu qua nội dung/blog. Quyết định độ dày nội dung và bộ section mặc định dùng trong `reference/landing-page.md`: Thu lead/Bán hàng trực tiếp thiên về ít section, CTA mạnh, dồn nén; Giới thiệu dịch vụ đầy đủ/Xây thương hiệu thiên về nhiều section thông tin, case study, blog.
+
+**L2. Website/landing page tham khảo** — nếu khách hàng nêu tên cụ thể, dùng làm neo bố cục section/tỷ lệ ảnh-text/nhịp cuộn. Nếu không nêu, TỰ đề xuất 2-3 trang landing/marketing thực tế nổi tiếng phù hợp ngành nghề (`requirements-summary.md`) + Mục tiêu vừa chọn ở L1 (vd SaaS B2B thu lead → kiểu Stripe/Linear/Notion marketing site; dịch vụ/agency giới thiệu đầy đủ → trang agency/consulting clean nhiều case study; bán hàng trực tiếp → trang sản phẩm/storefront hiện đại) — đây là câu tham khảo RIÊNG cho landing page, khác với câu 4 ở phần 8 câu chuẩn bên dưới (vốn tham chiếu theo *app phần mềm*, không phù hợp cho website marketing) — không được bỏ trống mục này.
+
+**L3. Mức độ animation/tương tác** — chọn 1: Tối giản (chỉ fade-in cơ bản khi cuộn) / Vừa phải (mặc định nếu không nêu — thêm hover/micro-interaction) / Sống động (thêm parallax nhẹ, số liệu đếm chạy khi vào viewport, carousel/tab tương tác) — xem pattern cụ thể theo từng mức trong `reference/landing-page.md`. Landing page KHÔNG mặc định chọn mức Tối giản như app quản lý nội bộ, vì mục tiêu là gây ấn tượng thị giác mạnh hơn.
+
+Ghi cả 3 câu trả lời (L1-L3) vào `ui-kit-brief.md`.
+
 ## Câu hỏi
 
 1. **Màu thương hiệu chính/phụ của khách hàng** — mã hex nếu có, hoặc mô tả chung (vd "xanh dương đậm") nếu chưa có mã cụ thể.
@@ -21,6 +39,8 @@ Hỏi 8 câu dưới đây trước khi generate bất kỳ màn hình nào — 
 
 **Anti-pattern đặc thù ngành (tự suy luận từ kiến thức sẵn có, KHÔNG tra bảng cố định theo ngành):** trước khi áp bảng archetype bên dưới, tự nêu 2-3 anti-pattern/quy ước thị giác ĐÚNG với ngành nghề cụ thể trong `requirements-summary.md` (không phải đặc điểm chung của "phần mềm quản trị") — vd ngành ngân hàng/tài chính tránh gradient tím-hồng kiểu AI-generated vì gây cảm giác thiếu tin cậy; ngành y tế có quy ước riêng về màu cảnh báo (đỏ dành riêng cho tình trạng nguy hiểm bệnh nhân, không dùng cho lỗi form thông thường); ngành giáo dục/công có xu hướng dùng màu nghiêm túc hơn thương mại. Vì presale tiếp xúc rất nhiều ngành khác nhau, đây là cách áp dụng được cho BẤT KỲ ngành nào mà không cần bảng tra cứu cố định phải bảo trì — dùng kiến thức đã có, không bịa nếu không chắc. Ghi 2-3 anti-pattern đã nêu vào `ui-kit-brief.md`.
 
+**Nếu Loại dự án = Landing page / Website marketing thuần:** bỏ qua toàn bộ suy luận archetype bên dưới — mặc định dùng archetype **Public/Thương mại** (nếu Mục tiêu L1 = Thu lead/Bán hàng trực tiếp) hoặc **Nội dung/Marketing** (nếu L1 = Giới thiệu dịch vụ đầy đủ/Xây thương hiệu qua nội dung), Q6 (Loại phần mềm) mặc định là Public. Ghi rõ archetype đã map vào `ui-kit-brief.md`.
+
 **Product archetype (suy luận tự động — không hỏi thêm câu nào, không tạo bộ ui-kit riêng theo từng ngành để đỡ phải bảo trì nhiều bộ):** dựa vào ngành nghề + bối cảnh dự án trong `requirements-summary.md` và câu trả lời Q6 (Loại phần mềm), xếp dự án vào 1 trong 4 archetype dưới đây — ghi rõ archetype đã chọn vào `ui-kit-brief.md`, dùng để hiệu chỉnh độ táo bạo màu, trọng tâm layout và tông giọng xuyên suốt mọi màn hình (thay cho phần "Density" cũ):
 
 | Archetype | Khi nào áp dụng | Độ táo bạo màu | Trọng tâm layout | Tông giọng/copy |
@@ -31,6 +51,8 @@ Hỏi 8 câu dưới đây trước khi generate bất kỳ màn hình nào — 
 | **Nội dung/Marketing** (CMS nội dung, portal giới thiệu, trang thông tin) | Chức năng chính là quản lý & hiển thị nội dung, không phải giao dịch/vận hành | Vừa: màu dùng nhấn nhá cho ảnh/card nội dung, không tràn lan | Ảnh/card-led thay vì bảng dữ liệu dày đặc, nhiều khoảng trắng | Thân thiện, biên tập, câu chữ tự nhiên |
 
 Nếu mood ở câu 3 và archetype có vẻ lệch nhau (vd khách chọn mood Dynamic nhưng archetype là Tài chính/Compliance nặng), ưu tiên mood khách hàng chọn cho phong cách thị giác (bo góc, gradient, độ rực màu), nhưng vẫn giữ nguyên yêu cầu về độ rõ ràng số liệu/badge trạng thái của archetype đó — 2 trục này không loại trừ nhau.
+
+**Nếu Loại dự án = Landing page / Website marketing thuần:** bỏ qua toàn bộ phần "Kiểu điều hướng chính" bên dưới (sidebar dọc/nav ngang/data-grid không áp dụng) — dùng header/footer nav riêng của `reference/landing-page.md`, cấu trúc theo bước "Identify the menu grouping / site navigation" trong `SKILL.md`.
 
 **Kiểu điều hướng chính (tách khỏi archetype, tự suy luận — không hỏi thêm câu):** mặc định theo archetype vừa chọn — Nội bộ/Vận hành và Tài chính/Compliance nặng dùng sidebar dọc (mục "Khung layout chuẩn" trong `screen-generation-guide.md`); Public/Thương mại và Nội dung/Marketing dùng nav ngang. Mặc định này áp dụng cho MỌI hệ thống đa module (nhiều module nghiệp vụ khác nhau, mỗi module có màn hình quản lý/CRUD riêng của nó) — kể cả khi nhiều module trong số đó có bảng dữ liệu dày đặc, vì đó là bình thường với app Nội bộ/Vận hành, không phải tín hiệu để đổi nav.
 
