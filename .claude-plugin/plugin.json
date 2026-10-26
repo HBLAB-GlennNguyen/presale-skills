@@ -1,7 +1,7 @@
 {
   "name": "hbg",
-  "version": "0.6.0",
-  "description": "Presale skill suite for Global: analyze RFPs/customer requirements, estimate effort and master schedule, draft client-facing proposals, and generate clickable UI prototypes.",
+  "version": "0.7.0",
+  "description": "Presale skill suite for Global: analyze RFPs/customer requirements, estimate effort and master schedule, draft client-facing proposals, generate clickable UI prototypes, and define and price the managed service after warranty.",
   "author": {
     "name": "thinhnd1"
   },
@@ -10,6 +10,7 @@
     "rfp",
     "estimation",
     "proposal",
-    "prototype"
+    "prototype",
+    "managed-service"
   ]
 }
