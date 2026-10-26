@@ -1,0 +1,216 @@
+{
+  "_comment": "Example config for a mid-size e-commerce build (~37 MM, 4 apps, 9 integrations, Azure). Copy it per deal to ./output/managed-service/config.json and change every value. Keys starting with _ are notes and are ignored.",
+  "project": {
+    "name": "Project X",
+    "client": "Client A",
+    "client_short": "Client A",
+    "vendor": "HBLAB",
+    "timezone": "SGT (UTC+8)",
+    "tz_short": "SGT",
+    "cloud": "Azure",
+    "assumption_section_no": 10,
+    "version": "v1.0"
+  },
+  "currency": {
+    "code": "USD",
+    "symbol": "$",
+    "secondary": {
+      "code": "SGD",
+      "symbol": "S$",
+      "rate": 1.28,
+      "note": "SGD for reference only, at an indicative rate of USD 1 = SGD 1.28. The contract price is in USD."
+    }
+  },
+  "warranty": {
+    "include_slide": true,
+    "months": 3,
+    "from": "final delivery",
+    "covers": [
+      "Covers bugs within HBLAB's scope of work.",
+      "New or changed requirements are handled as Change Requests."
+    ],
+    "table_title": "Proposed response targets during warranty (to be agreed)",
+    "targets": [
+      {
+        "severity": "Critical (system down)",
+        "response": "≤ 2 hours",
+        "resolution": "≤ 24 hours"
+      },
+      {
+        "severity": "High (core feature broken, workaround exists)",
+        "response": "≤ 4 hours",
+        "resolution": "≤ 3 business days"
+      },
+      {
+        "severity": "Medium",
+        "response": "≤ 1 business day",
+        "resolution": "≤ 5 business days"
+      },
+      {
+        "severity": "Low",
+        "response": "≤ 2 business days",
+        "resolution": "Next release"
+      }
+    ]
+  },
+  "service": {
+    "name": "Managed service after warranty",
+    "optional": true,
+    "in_fixed_price": false,
+    "start": "after the 3-month warranty period",
+    "term_months": 12,
+    "billing": "invoiced monthly or quarterly",
+    "renewal": "Renewable every 12 months. Unit prices and resources are reviewed at each renewal, based on the ticket and effort history of the previous year.",
+    "notice": "Either party can end the service with 1 month written notice after the first 6 months."
+  },
+  "resources": {
+    "months_per_year": 12,
+    "roles": [
+      {
+        "role": "DEV",
+        "desc": "Maintenance & support",
+        "mm_per_month": 0.5,
+        "unit_price": 2000,
+        "scope": "Bug fixes, L2 support, minor configuration, quarterly security patches, annual VAPT remediation"
+      },
+      {
+        "role": "PM",
+        "desc": "Service management",
+        "mm_per_month": 0.1,
+        "unit_price": 2400,
+        "scope": "Ticket triage, monthly SLA report, quarterly review, change request estimates and quotes"
+      },
+      {
+        "role": "DevOps",
+        "desc": "Cloud operations (Azure)",
+        "mm_per_month": 0.1,
+        "unit_price": 2200,
+        "scope": "Azure monitoring and alerts, infrastructure incident handling, backup/restore checks, OS/PaaS patching, Azure cost review"
+      }
+    ],
+    "pool_rule": "If support effort exceeds the monthly pool for 2 consecutive months, both parties review the resourcing.",
+    "_unit_price_note": "SAMPLE unit prices only, not a rate card. Always use the unit prices of the deal's own quotation (ask the user)."
+  },
+  "coverage": {
+    "hours": "Monday-Saturday 09:00-20:00 SGT (UTC+8), excluding local public holidays",
+    "extra": "Sundays with events (about 8 per year) 09:00-20:00 SGT, notified by Client A at least 10 working days in advance",
+    "outside": "Outside these hours: best effort.",
+    "slide_text": "Mon–Sat 09:00–20:00 SGT, plus Sundays with events (~8 per year).",
+    "channels": "Ticketing system or email; hotline / Microsoft Teams in addition for P1 incidents."
+  },
+  "sla": {
+    "counted": "counted within coverage hours",
+    "levels": [
+      {
+        "code": "P1",
+        "name": "Critical",
+        "definition": "production down; checkout or payment unavailable; data breach",
+        "slide_definition": "system down, checkout / payment unavailable",
+        "response": "2 hours",
+        "workaround": "4 hours",
+        "resolution": "1 working day",
+        "slide_response": "≤ 2 hours",
+        "slide_resolution": "Workaround ≤ 4 hours, fix ≤ 1 business day"
+      },
+      {
+        "code": "P2",
+        "name": "High",
+        "definition": "major function impaired, no workaround",
+        "slide_definition": "major function broken, no workaround",
+        "response": "4 hours",
+        "workaround": "1 working day",
+        "resolution": "3 working days",
+        "slide_response": "≤ 4 hours",
+        "slide_resolution": "≤ 3 business days"
+      },
+      {
+        "code": "P3",
+        "name": "Medium",
+        "definition": "function impaired, workaround available",
+        "slide_definition": "workaround exists",
+        "response": "1 working day",
+        "workaround": "",
+        "resolution": "next scheduled release (within 10 working days)",
+        "slide_response": "≤ 1 business day",
+        "slide_resolution": "Next release (≤ 10 business days)"
+      },
+      {
+        "code": "P4",
+        "name": "Low",
+        "definition": "cosmetic issue, how-to question",
+        "slide_definition": "cosmetic, how-to",
+        "response": "2 working days",
+        "workaround": "",
+        "resolution": "added to the backlog",
+        "slide_response": "≤ 2 business days",
+        "slide_resolution": "Backlog"
+      }
+    ]
+  },
+  "included": [
+    "Bug fixes for the delivered scope",
+    "L2 user support (L1 by the client's helpdesk)",
+    "Minor configuration changes",
+    "Quarterly security patches and library updates",
+    "Remediation of the annual VAPT findings (Critical / High within 10 / 20 working days, Medium within 60 days or the next release, Low in the backlog) with support for one retest. The VAPT itself is arranged by Client A.",
+    "Azure monitoring and alerts, infrastructure incident handling, backup/restore checks, OS/PaaS patching and a monthly Azure cost review"
+  ],
+  "change_request": {
+    "threshold_md": 5,
+    "text": "For P2-P4, any item that needs 1 week (5 man-days) of effort or more, large items, and functions outside the delivered scope are change requests. HBLAB will estimate and quote them separately."
+  },
+  "excluded": [
+    "Issues caused by third-party systems (ERP, payment gateway, SSO, CRM, etc.); HBLAB supports the investigation",
+    "Azure subscription fees and other third-party licence or usage fees",
+    "Correction of data caused by user error beyond minor cases",
+    "New features, redesigns and new integrations (change requests)"
+  ],
+  "reporting": [
+    "Monthly support report: tickets by severity, SLA achievement, effort used against the monthly pool",
+    "Quarterly review meeting: trends, risks, backlog and improvement proposals"
+  ],
+  "client_responsibilities": [
+    "Name one point of contact and a backup for raising and approving tickets",
+    "Run L1 support for end users and log tickets with steps, screenshots and business impact",
+    "Keep HBLAB's access to production, the Azure subscription and third-party portals (payment gateway, CRM, ...) valid",
+    "Notify event Sundays and planned changes in third-party systems at least 10 working days in advance",
+    "Arrange and pay for the annual VAPT and share the report with HBLAB",
+    "Test and approve fixes on staging within 3 working days so releases are not delayed"
+  ],
+  "slides": {
+    "overview_title": "Managed Service after Warranty (optional)",
+    "cost_title": "Managed Service: Scope & Cost (not in the Fixed Price)",
+    "overview_bullets": [
+      "Resources per month:\n{roles_lines}",
+      "Coverage: {coverage_slide}",
+      "Includes bug fixes, L2 support, minor configuration, security patches, annual VAPT remediation, Azure monitoring and incident handling.",
+      "From P2 down, items of 1 week or more, large items and out-of-scope functions are Change Requests, estimated and quoted."
+    ],
+    "scope_rows": [
+      {
+        "item": "Included",
+        "detail": "Bug fixes, L2 support, minor configuration, quarterly security patches, annual VAPT remediation (1 retest), Azure monitoring, backup checks and cost review"
+      },
+      {
+        "item": "Change requests",
+        "detail": "P2–P4 items of 5 man-days or more, large items and functions outside the delivered scope: estimated and quoted separately"
+      },
+      {
+        "item": "Excluded",
+        "detail": "Third-party system issues (investigation supported), Azure and licence fees, data fixes for user error beyond minor cases"
+      },
+      {
+        "item": "Reporting",
+        "detail": "Monthly support report (tickets, SLA, effort used); quarterly review meeting"
+      },
+      {
+        "item": "Client A provides",
+        "detail": "Point of contact, L1 helpdesk, system access, event-day notice (10 working days), annual VAPT, timely approval of fixes"
+      }
+    ],
+    "cost_footnote": "Starts after the 3-month warranty; 12-month term, invoiced monthly or quarterly; not included in the Fixed Price."
+  },
+  "_review_notes": [
+    "client_responsibilities, renewal and notice are proposal drafts: confirm them with the deal owner before sending."
+  ]
+}

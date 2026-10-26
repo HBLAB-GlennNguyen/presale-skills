@@ -1,13 +1,15 @@
 # Presale Skills (`hbg`)
 
-Bộ 4 skill Claude Code hỗ trợ quy trình presale: từ phân tích RFP đến ước lượng effort, viết proposal, và dựng UI prototype.
+Bộ 5 skill Claude Code hỗ trợ quy trình presale: từ phân tích RFP đến ước lượng effort, viết proposal, dựng UI prototype, và đề xuất gói managed service sau bảo hành.
 
 ```
-analyzing-rfp ──┬──> estimating-effort ──> writing-proposal
+analyzing-rfp ──┬──> estimating-effort ──┬──> writing-proposal
+                │                        └──> proposing-managed-service
                 └──────────────────────────> building-prototype
 ```
 
 - `estimating-effort` và `writing-proposal` cần chạy đúng thứ tự (mỗi skill đọc output của skill trước).
+- `proposing-managed-service` đọc output của `analyzing-rfp` + `estimating-effort` nếu có (không bắt buộc), luôn hỏi đơn giá theo báo giá của deal.
 - `building-prototype` chỉ cần output của `analyzing-rfp` (function list + sitemap), chạy độc lập với `estimating-effort`/`writing-proposal`. Nếu đã chạy `building-prototype` từ trước khi chạy `writing-proposal`, proposal sẽ tự thêm mục "Demo tương tác" — nên cân nhắc chạy sớm dù thứ tự vẫn là tùy chọn.
 
 ## Cài đặt
@@ -30,7 +32,7 @@ Chỉ nên cài 1 trong 2 cách trên cho cùng máy — cài cả 2 sẽ tạo 
 
 Sau khi cài, **mở phiên Claude Code mới** (đóng và mở lại cửa sổ/terminal) để nạp lại danh sách skill — phiên đang chạy lúc cài sẽ không thấy skill mới ngay.
 
-Cài xong, 4 skill gọi được qua: `hbg:analyzing-rfp`, `hbg:estimating-effort`, `hbg:writing-proposal`, `hbg:building-prototype`.
+Cài xong, 5 skill gọi được qua: `hbg:analyzing-rfp`, `hbg:estimating-effort`, `hbg:writing-proposal`, `hbg:building-prototype`, `hbg:proposing-managed-service`.
 
 ## Hướng dẫn chạy end-to-end test
 
@@ -103,6 +105,24 @@ Skill sẽ hỏi:
 - `ui-kit-brief.md`, `progress.md`
 
 Mở `output/prototype/index.html` trực tiếp bằng trình duyệt để xem, không cần server.
+
+### Bước 5 — `hbg:proposing-managed-service`
+
+Chạy sau Bước 2 (đọc tổng effort từ `effort-breakdown.md` để đề xuất nguồn lực), hoặc độc lập cho deal không đi qua bộ skill (lấy thông tin từ file estimate / deck có sẵn).
+
+Skill sẽ:
+- Gom thông tin deal: thời gian bảo hành, múi giờ, module bàn giao, hệ thống bên thứ 3, ai vận hành cloud, VAPT định kỳ
+- Luôn hỏi **đơn giá từng role** theo báo giá của deal (không lấy từ config mẫu)
+- Đề xuất nguồn lực / tháng viết gọn `DEV - …`, `PM - …`, `DevOps - …` theo `reference/config-guide.md`, kèm lý do
+- Ghi 1 file config, rồi sinh 3 output cùng một bộ số; cấu trúc chuẩn 10 mục: tổng quan, nguồn lực & giá, khung giờ & kênh, SLA P1–P4, bao gồm, ngưỡng CR, loại trừ, báo cáo, điều chỉnh & gia hạn, trách nhiệm khách hàng
+
+Cần Python 3 với `openpyxl` và `python-pptx`.
+
+**Output** (`./output/managed-service/`):
+- `config.json` — toàn bộ input, sửa rồi build lại
+- `managed-service.md` — nội dung 10 mục cho proposal
+- `managed-service.xlsx` — `MS_Cost` (ô vàng là input, còn lại là công thức) + `MS_Assumption` (dòng đánh số theo format sheet assumption của file estimate)
+- `managed-service.pptx` — 3 slide HBLAB: Warranty, Managed Service + SLA, Scope & Cost
 
 ## Ghi chú
 
